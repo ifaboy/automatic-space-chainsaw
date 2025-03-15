@@ -1,0 +1,65 @@
+{
+    "version": "0.2.0",
+    "compounds": [
+        {
+            "name": "Run All",
+            "presentation": {
+				"group": "maingroup",
+				"order": 1
+			},
+            "configurations": [
+                "BackEnd",
+                "FrontEnd"
+            ]
+        }
+    ],
+    "configurations": [
+        {
+            "name": "BackEnd",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build backend",
+            "program": "${workspaceFolder}/SampleApp/BackEnd/bin/Debug/net9.0/BackEnd.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SampleApp/BackEnd",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/scalar"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "FrontEnd",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build frontend",
+            "program": "${workspaceFolder}/SampleApp/FrontEnd/bin/Debug/net9.0/FrontEnd.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/SampleApp/FrontEnd",
+            "stopAtEntry": false,
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "\\bNow listening on:\\s+(https?://\\S+)",
+                "uriFormat": "%s/"
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": ".NET Core Attach",
+            "type": "coreclr",
+            "request": "attach"
+        }
+    ]
+}
